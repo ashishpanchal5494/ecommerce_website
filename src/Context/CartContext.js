@@ -5,13 +5,12 @@ const CartContext = createContext();
 
 const getLocalCartData = () => {
   let newLocalData = localStorage.getItem("ashishPanchal");
-  if (newLocalData === []) {
-    return []; 
-
-  } else{
+  if ((newLocalData = [])) {
+    return [];
+  } else {
     return JSON.parse(newLocalData);
   }
-}
+};
 
 const initialState = {
   // cart: [],
@@ -51,9 +50,9 @@ const CartProvider = ({ children }) => {
   // to add the data in localStorage
   // get vs set
   useEffect(() => {
-    dispatch({ type: "CART_TOTAL_ITEM"})
-    dispatch({ type: "CART_TOTAL_PRICE"})
-    localStorage.setItem("ashishPanchal", JSON.stringify(state.cart))
+    dispatch({ type: "CART_TOTAL_ITEM" });
+    dispatch({ type: "CART_TOTAL_PRICE" });
+    localStorage.setItem("ashishPanchal", JSON.stringify(state.cart));
   }, [state.cart]);
 
   return (
@@ -65,7 +64,8 @@ const CartProvider = ({ children }) => {
         clearCart,
         setDecrease,
         setIncrement,
-      }}>
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
